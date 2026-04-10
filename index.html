@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="AI-powered fertilizer recommendation system that analyzes soil parameters and crop data to suggest optimal fertilizer types and dosages for maximum yield." />
+    <title>AgriSense — Smart Fertilizer Recommendation System</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>" />
+</head>
+
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 2C16 2 8 8 8 16C8 20.4183 11.5817 24 16 24" stroke="#2d6a4f" stroke-width="2.5"
+                        stroke-linecap="round" />
+                    <path d="M16 2C16 2 24 8 24 16C24 20.4183 20.4183 24 16 24" stroke="#52b788" stroke-width="2.5"
+                        stroke-linecap="round" />
+                    <path d="M16 24V30" stroke="#2d6a4f" stroke-width="2.5" stroke-linecap="round" />
+                    <circle cx="16" cy="16" r="3" fill="#52b788" />
+                </svg>
+                AgriSense
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#hero" class="active">Home</a>
+                <a href="#features">How It Works</a>
+                <a href="#predict">Predict</a>
+                <a href="#about">About</a>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:.75rem;">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <svg id="sunIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                    <svg id="moonIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+        <div class="hero-particle"></div>
+        <div class="hero-particle"></div>
+        <div class="hero-particle"></div>
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                    </svg>
+                    ML-Powered Agriculture
+                </div>
+                <h1>Smart <span class="highlight">Fertilizer</span> Recommendations for Every Field</h1>
+                <p>Leverage machine learning to analyze your soil, climate, and crop data — and get precise fertilizer
+                    suggestions that boost yield while protecting the environment.</p>
+                <div class="hero-btns">
+                    <a href="#predict" class="btn btn-primary">
+                        Get Recommendation
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </a>
+                    <a href="#features" class="btn btn-outline">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="hero-card-header">
+                        <div class="hero-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="hero-card-title">System Overview</div>
+                            <div class="hero-card-subtitle">Real-time analytics</div>
+                        </div>
+                    </div>
+                    <div class="stat-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">98.5%</div>
+                            <div class="stat-label">Accuracy</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">7</div>
+                            <div class="stat-label">Fertilizer Types</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">6</div>
+                            <div class="stat-label">Soil Parameters</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">&lt; 2s</div>
+                            <div class="stat-label">Prediction Time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section class="section features" id="features">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">🧪 How It Works</div>
+                <h2 class="section-title">Three Simple Steps to Better Yields</h2>
+                <p class="section-desc">Our machine learning model analyzes your soil and crop data, then recommends the
+                    optimal fertilizer with precise dosage guidance.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card reveal reveal-delay-1">
+                    <div class="feature-step">1</div>
+                    <div class="feature-icon green">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                            <polyline points="10 9 9 9 8 9" />
+                        </svg>
+                    </div>
+                    <h3>Input Soil Data</h3>
+                    <p>Enter your soil's Nitrogen, Phosphorus, Potassium levels, pH value, moisture content, and select
+                        your crop type.</p>
+                </div>
+
+                <div class="feature-card reveal reveal-delay-2">
+                    <div class="feature-step">2</div>
+                    <div class="feature-icon gold">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                    </div>
+                    <h3>ML Analysis</h3>
+                    <p>Our trained machine learning model processes your inputs against thousands of data points to find
+                        the best fertilizer match.</p>
+                </div>
+
+                <div class="feature-card reveal reveal-delay-3">
+                    <div class="feature-step">3</div>
+                    <div class="feature-icon dark">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg>
+                    </div>
+                    <h3>Get Recommendations</h3>
+                    <p>Receive a detailed recommendation with fertilizer name, NPK ratio, application dosage, and
+                        confidence score.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PREDICTION FORM ========== -->
+    <section class="section predict-section" id="predict">
+        <div class="container">
+            <div class="predict-wrapper">
+                <div class="predict-info reveal">
+                    <div class="section-label">🌾 Predict Now</div>
+                    <h2>Get Your Personalized Fertilizer Recommendation</h2>
+                    <p>Fill in your soil test results and crop details. Our model will analyze the data and provide an
+                        accurate fertilizer suggestion within seconds.</p>
+                    <ul class="info-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Based on real agricultural research data
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Supports multiple crop types and soil conditions
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Includes dosage and application guidelines
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Confidence score for each prediction
+                        </li>
+                    </ul>
+                </div>
+
+                <form class="predict-form reveal" id="predictForm" novalidate>
+                    <div class="form-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <line x1="3" y1="9" x2="21" y2="9" />
+                            <line x1="9" y1="21" x2="9" y2="9" />
+                        </svg>
+                        Soil & Crop Parameters
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nitrogen">Nitrogen (N) <span>*</span></label>
+                            <input type="number" class="form-control" id="nitrogen" placeholder="e.g. 37" min="0"
+                                max="200" required />
+                            <div class="error-msg" id="nitrogenError">Please enter a valid nitrogen value (0-200)</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phosphorus">Phosphorus (P) <span>*</span></label>
+                            <input type="number" class="form-control" id="phosphorus" placeholder="e.g. 0" min="0"
+                                max="200" required />
+                            <div class="error-msg" id="phosphorusError">Please enter a valid phosphorus value (0-200)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="potassium">Potassium (K) <span>*</span></label>
+                            <input type="number" class="form-control" id="potassium" placeholder="e.g. 0" min="0"
+                                max="200" required />
+                            <div class="error-msg" id="potassiumError">Please enter a valid potassium value (0-200)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="humidity">Humidity (%) <span>*</span></label>
+                            <input type="number" class="form-control" id="humidity" placeholder="e.g. 52" min="0"
+                                max="100" required />
+                            <div class="error-msg" id="humidityError">Please enter a valid humidity value (0-100)</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="moisture">Moisture (%) <span>*</span></label>
+                            <input type="number" class="form-control" id="moisture" placeholder="e.g. 62" min="0"
+                                max="100" required />
+                            <div class="error-msg" id="moistureError">Please enter a valid moisture value (0-100)</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="temperature">Temperature (°C) <span>*</span></label>
+                            <input type="number" class="form-control" id="temperature" placeholder="e.g. 26" min="-10"
+                                max="60" step="0.1" required />
+                            <div class="error-msg" id="temperatureError">Please enter a valid temperature (-10 to 60)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="soilType">Soil Type <span>*</span></label>
+                            <select class="form-control" id="soilType" required>
+                                <option value="">Select soil type</option>
+                                <option value="Loamy">Loamy</option>
+                                <option value="Sandy">Sandy</option>
+                                <option value="Clayey">Clayey</option>
+                                <option value="Black">Black</option>
+                                <option value="Red">Red</option>
+                            </select>
+                            <div class="error-msg" id="soilTypeError">Please select a soil type</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cropType">Crop Type <span>*</span></label>
+                            <select class="form-control" id="cropType" required>
+                                <option value="">Select crop type</option>
+                                <option value="Rice">Rice</option>
+                                <option value="Wheat">Wheat</option>
+                                <option value="Maize">Maize</option>
+                                <option value="Sugarcane">Sugarcane</option>
+                                <option value="Cotton">Cotton</option>
+                                <option value="Tobacco">Tobacco</option>
+                                <option value="Millets">Millets</option>
+                                <option value="Pulses">Pulses</option>
+                                <option value="Oil Seeds">Oil Seeds</option>
+                                <option value="Ground Nuts">Ground Nuts</option>
+                            </select>
+                            <div class="error-msg" id="cropTypeError">Please select a crop type</div>
+                        </div>
+
+                        <div class="form-group full">
+                            <button type="submit" class="btn-submit" id="submitBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                    <polyline points="22 4 12 14.01 9 11.01" />
+                                </svg>
+                                <span id="btnText">Get Fertilizer Recommendation</span>
+                                <div class="spinner" id="spinner"></div>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== RESULTS ========== -->
+    <section class="section results-section" id="results">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">✅ Prediction Results</div>
+                <h2 class="section-title">Your Fertilizer Recommendation</h2>
+                <p class="section-desc">Based on your soil and crop parameters, here is our ML model's recommendation.
+                </p>
+            </div>
+
+            <div class="results-grid">
+                <div class="result-main">
+                    <div class="result-header">
+                        <div class="result-icon">🧪</div>
+                        <div>
+                            <div class="result-name" id="fertilizerName">—</div>
+                            <div class="result-tag">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                                <span id="resultTag">Recommended</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Fertilizer Type</span>
+                            <span class="detail-value" id="fertilizerType">—</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Application Rate</span>
+                            <span class="detail-value" id="applicationRate">—</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Application Method</span>
+                            <span class="detail-value" id="applicationMethod">—</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Best Season</span>
+                            <span class="detail-value" id="bestSeason">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="confidence-section">
+                    <div class="confidence-title">Model Confidence</div>
+                    <div class="confidence-value" id="confidenceValue">0%</div>
+                    <div class="confidence-label">Prediction Confidence Score</div>
+                    <div class="confidence-meter">
+                        <div class="confidence-bar-bg">
+                            <div class="confidence-bar-fill" id="confidenceBar"></div>
+                        </div>
+                    </div>
+
+                    <div class="npk-chart">
+                        <div class="npk-item">
+                            <div class="npk-letter n">N</div>
+                            <div class="npk-value" id="npkN">—</div>
+                            <div class="npk-label">Nitrogen</div>
+                        </div>
+                        <div class="npk-item">
+                            <div class="npk-letter p">P</div>
+                            <div class="npk-value" id="npkP">—</div>
+                            <div class="npk-label">Phosphorus</div>
+                        </div>
+                        <div class="npk-item">
+                            <div class="npk-letter k">K</div>
+                            <div class="npk-value" id="npkK">—</div>
+                            <div class="npk-label">Potassium</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tips-card">
+                    <div class="tips-title">
+                        💡 Application Tips
+                    </div>
+                    <div class="tips-list" id="tipsList">
+                        <!-- Filled dynamically -->
+                    </div>
+                </div>
+
+                <div class="dosage-card">
+                    <div class="dosage-title">
+                        💊 Recommended Dosage
+                    </div>
+                    <div class="dosage-crop" id="dosageCrop"></div>
+                    <div class="dosage-grid">
+                        <div class="dosage-item">
+                            <div class="dosage-item-icon">⚖️</div>
+                            <div class="dosage-item-content">
+                                <div class="dosage-item-label">Dosage Per Acre</div>
+                                <div class="dosage-item-value" id="dosagePerAcre">—</div>
+                            </div>
+                        </div>
+                        <div class="dosage-item">
+                            <div class="dosage-item-icon">📅</div>
+                            <div class="dosage-item-content">
+                                <div class="dosage-item-label">Total Per Season</div>
+                                <div class="dosage-item-value" id="dosageTotal">—</div>
+                            </div>
+                        </div>
+                        <div class="dosage-item">
+                            <div class="dosage-item-icon">🔄</div>
+                            <div class="dosage-item-content">
+                                <div class="dosage-item-label">Number of Splits</div>
+                                <div class="dosage-item-value" id="dosageSplits">—</div>
+                            </div>
+                        </div>
+                        <div class="dosage-item">
+                            <div class="dosage-item-icon">🗓️</div>
+                            <div class="dosage-item-content">
+                                <div class="dosage-item-label">Application Schedule</div>
+                                <div class="dosage-item-value" id="dosageSchedule">—</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== AREA CALCULATOR ===== -->
+                    <div class="area-calc-section">
+                        <div class="area-calc-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                                <path d="M3 9h18M9 21V9" />
+                            </svg>
+                            Calculate Total Fertilizer for Your Farm Area
+                        </div>
+                        <div class="area-calc-inputs">
+                            <div class="area-input-group">
+                                <label for="farmArea">Farm Area</label>
+                                <input type="number" id="farmArea" class="form-control area-input" placeholder="e.g. 5"
+                                    min="0.01" step="0.01" />
+                            </div>
+                            <div class="area-input-group">
+                                <label for="areaUnit">Unit</label>
+                                <select id="areaUnit" class="form-control area-select">
+                                    <option value="acre">Acres</option>
+                                    <option value="hectare">Hectares</option>
+                                    <option value="sqft">Sq. Feet</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn-calc" id="calcAreaBtn" onclick="calculateAreaDosage()">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                    <polyline points="22 4 12 14.01 9 11.01" />
+                                </svg>
+                                Calculate
+                            </button>
+                        </div>
+                        <div class="area-calc-result" id="areaCalcResult" style="display:none;">
+                            <div class="area-result-row">
+                                <div class="area-result-item">
+                                    <div class="area-result-label">Min Quantity Needed</div>
+                                    <div class="area-result-value green" id="areaResultMin">—</div>
+                                </div>
+                                <div class="area-result-divider">–</div>
+                                <div class="area-result-item">
+                                    <div class="area-result-label">Max Quantity Needed</div>
+                                    <div class="area-result-value green" id="areaResultMax">—</div>
+                                </div>
+                            </div>
+                            <div class="area-result-note" id="areaResultNote"></div>
+                        </div>
+                        <div class="area-calc-error" id="areaCalcError" style="display:none;"></div>
+                    </div>
+
+                    <div class="dosage-note">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="16" x2="12" y2="12" />
+                            <line x1="12" y1="8" x2="12.01" y2="8" />
+                        </svg>
+                        General application rate: <strong id="dosageGeneral">—</strong> — adjust based on soil test
+                        results and local conditions.
+                    </div>
+                </div>
+
+                <div class="outcomes-card">
+                    <div class="outcomes-title">
+                        📊 Expected Outcomes
+                    </div>
+                    <div class="outcomes-grid" id="outcomesList">
+                        <!-- Filled dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-visual reveal">
+                    <div class="about-visual-content">
+                        <div class="big-icon">🌿</div>
+                        <h3 style="font-size:1.4rem;margin-bottom:.5rem;">Powered by Machine Learning</h3>
+                        <p style="font-size:.9rem;opacity:.8;">Trained on thousands of real-world agricultural data
+                            points</p>
+                        <div class="about-stats">
+                            <div class="about-stat">
+                                <div class="about-stat-value">10K+</div>
+                                <div class="about-stat-label">Data Points</div>
+                            </div>
+                            <div class="about-stat">
+                                <div class="about-stat-value">98.5%</div>
+                                <div class="about-stat-label">Accuracy</div>
+                            </div>
+                            <div class="about-stat">
+                                <div class="about-stat-value">7</div>
+                                <div class="about-stat-label">Fertilizers</div>
+                            </div>
+                            <div class="about-stat">
+                                <div class="about-stat-value">5+</div>
+                                <div class="about-stat-label">Soil Types</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-content reveal">
+                    <div class="section-label">🌱 About the System</div>
+                    <h2>Data-Driven Agriculture for a Sustainable Future</h2>
+                    <p>Our Fertilizer Recommendation System uses state-of-the-art machine learning algorithms to analyze
+                        soil composition, environmental conditions, and crop requirements — then recommends the most
+                        suitable fertilizer with precise dosage instructions.</p>
+                    <p>By optimizing fertilizer usage, farmers can improve crop yields, reduce costs, and minimize
+                        environmental impact through precision agriculture.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Random Forest & Gradient Boosting models
+                        </div>
+                        <div class="about-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Considers soil NPK, pH, moisture & temperature
+                        </div>
+                        <div class="about-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Supports 10+ crop types across diverse climates
+                        </div>
+                        <div class="about-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            Environment-friendly dosage optimization
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div>
+                    <div class="footer-brand">
+                        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                            <path d="M16 2C16 2 8 8 8 16C8 20.4183 11.5817 24 16 24" stroke="#52b788" stroke-width="2.5"
+                                stroke-linecap="round" />
+                            <path d="M16 2C16 2 24 8 24 16C24 20.4183 20.4183 24 16 24" stroke="#74c69d"
+                                stroke-width="2.5" stroke-linecap="round" />
+                            <path d="M16 24V30" stroke="#52b788" stroke-width="2.5" stroke-linecap="round" />
+                            <circle cx="16" cy="16" r="3" fill="#74c69d" />
+                        </svg>
+                        AgriSense
+                    </div>
+                    <p class="footer-desc">Empowering farmers with AI-driven insights for smarter fertilizer decisions
+                        and sustainable agriculture.</p>
+                </div>
+                <div>
+                    <h4>Navigation</h4>
+                    <div class="footer-links">
+                        <a href="#hero">Home</a>
+                        <a href="#features">How It Works</a>
+                        <a href="#predict">Predict</a>
+                        <a href="#about">About</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <div class="footer-links">
+                        <a href="#">Documentation</a>
+                        <a href="#">API Reference</a>
+                        <a href="#">Research Paper</a>
+                        <a href="#">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 AgriSense. All rights reserved.</span>
+                <span>Built with 🌱 for sustainable farming</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

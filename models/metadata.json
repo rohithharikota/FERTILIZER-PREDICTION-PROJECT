@@ -1,0 +1,51 @@
+{
+  "best_model": "SVM",
+  "accuracy": 99.3,
+  "feature_columns": [
+    "Temperature",
+    "Humidity",
+    "Moisture",
+    "Nitrogen",
+    "Phosphorus",
+    "Potassium",
+    "Soil_Type",
+    "Crop_Type"
+  ],
+  "categorical_columns": [
+    "Soil_Type",
+    "Crop_Type"
+  ],
+  "soil_types": [
+    "Black",
+    "Clayey",
+    "Loamy",
+    "Red",
+    "Sandy"
+  ],
+  "crop_types": [
+    "Cotton",
+    "Ground Nuts",
+    "Maize",
+    "Millets",
+    "Oil Seeds",
+    "Pulses",
+    "Rice",
+    "Sugarcane",
+    "Tobacco",
+    "Wheat"
+  ],
+  "fertilizer_types": [
+    "Ammonium Sulphate",
+    "DAP",
+    "MOP",
+    "NPK 10-26-26",
+    "NPK 20-20-20",
+    "SSP",
+    "Urea"
+  ],
+  "all_results": {
+    "Random Forest": 99.1,
+    "Decision Tree": 97.2,
+    "SVM": 99.3
+  }
+}
